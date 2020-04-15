@@ -21,8 +21,11 @@ Pod::Spec.new do |s|
   s.platform     = :ios, "8.0"
   s.requires_arc = true
   
+
+ # s.dependency 'farwolf.weex'
+   # s.dependency 'farwolf.weex', :git => 'https://github.com/farwolf2010/farwolf.weex'
+   s.dependency 'photoplus', :git => 'https://github.com/farwolf2010/photoplus-ios.git'
  
-  s.dependency 'farwolf.weex'
  
 
 end
