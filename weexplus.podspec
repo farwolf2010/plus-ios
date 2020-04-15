@@ -24,8 +24,8 @@ Pod::Spec.new do |s|
 
  # s.dependency 'farwolf.weex'
    # s.dependency 'farwolf.weex', :git => 'https://github.com/farwolf2010/farwolf.weex'
-   s.dependency 'photoplus', :git => 'https://github.com/farwolf2010/photoplus-ios.git'
- 
+   # s.dependency 'photoplus', :git => 'https://github.com/farwolf2010/photoplus-ios.git'
+  s.dependency 'photoplus'
  
 
 end
