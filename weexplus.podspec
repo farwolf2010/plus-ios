@@ -5,16 +5,16 @@ Pod::Spec.new do |s|
  
 
   s.name         = "weexplus"
-  s.version      = "1.0.0"
-  s.summary      = "Handle some data."
+  s.version      = "1.0.1"
+  s.summary      = "weexplus核心库."
   s.description  = <<-DESC
-                    Handle the data.
+                    weexplus核心库.
                    DESC
 
-  s.homepage     = "http://csdn.net/veryitman"
+  s.homepage     = "http://farwolf2010.github.io/doc"
   s.license      = "MIT"
   s.author             = { "zjr" => "362675035@qq.com" }
-   s.source       = { :git => "https://github.com/farwolf2010/plus-ios.git", :tag => "1.0.0" }
+  s.source       = { :git => "https://github.com/farwolf2010/plus-ios.git", :tag => "1.0.1" }
   s.source_files  = "Source", "weexplus/**/*.{h,m,mm,c}"
   s.exclude_files = "Source/Exclude"
   s.resources = 'weexplus/resources/**'
