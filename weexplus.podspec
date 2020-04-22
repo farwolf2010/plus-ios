@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.version      = "1.0.2"
   s.summary      = "weexplus核心库."
   s.description  = <<-DESC
-                    weexplus核心库.
+                    weexplus sdk模式接入库
                    DESC
 
   s.homepage     = "http://farwolf2010.github.io/doc"
