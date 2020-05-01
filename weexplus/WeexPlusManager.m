@@ -11,8 +11,14 @@
 #import "Weex.h"
 
 @implementation WeexPlusManager
-+(void)init:(NSDictionary*)lanch{
-    [WeexPlus init:nil];
++(void)init:(NSDictionary*)lanch window:(UIWindow*)window{
+   [URL copyBundleToDisk];
+    [Weex initAppBoardContent];
+    //    [WXTracingManager setTracingEnable:NO];
+    [Weex setBaseDir:[Config schema]];
+    [Weex initWeex:@"farwolf" appName:@"weexplus" appVersion:@"1.0.0"];
+     [WeexPluginManager initAllEntry:lanch];
+    [WeexPlus addLoading:window];
 }
 +(void)open:(NSDictionary*)param{
     NSString *url=param[@"url"];
@@ -49,29 +55,44 @@
            animated=[param[@"animated"] boolValue];
            
        }
+    BOOL showloading=true;
+         if([param objectForKey:@"showloading"]!=nil)
+         {
+             showloading=[param[@"showloading"] boolValue];
+             
+         }
      NSURL *ul=[Weex toURL:url];
+     [WeexPlus showLoading];
      [WeexFactory renderNew:ul preload:preload compelete:^(WXNormalViewContrller *vc) {
          UIViewController *topVc=   [[UIApplication sharedApplication].keyWindow.rootViewController TopViewController];
-         if(present){
+         if(!present){
             vc.param=param;
             vc.instance.param=param;
             [[topVc navigationController] pushViewController:vc animated:animated];
+            [WeexPlus hideLoading];
          }else{
               UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:vc];
               vc.param=param;
               vc.instance.param=param;
               nav.modalPresentationStyle=UIModalPresentationFullScreen;
               [topVc presentViewController:nav animated:animated completion:^{
-     
+               [WeexPlus hideLoading];
               }];
          }
-        
-       
-            
-        
 
     } fail:^(NSString *msg) {
 
-    }   frame:[UIApplication sharedApplication].keyWindow.bounds isPortrait:isPortrait];
+    }   frame:[UIApplication sharedApplication].keyWindow.bounds isPortrait:isPortrait showloading:false];
+    #ifdef DEBUG
+       if([Weex getRefreshManager].hotReloadSocket==nil){
+           [url save:@"url"];
+            [@"9897" save:@"socketport"];
+            [[Weex getRefreshManager] open:[Weex getDebugIp] port:[Weex socketPort]];
+       }
+       #endif
 }
+
+
+
+
 @end

@@ -10,7 +10,7 @@
  
 
 @interface WeexPlusManager : NSObject
-+(void)init:(NSDictionary*)lanch;
++(void)init:(NSDictionary*)lanch window:(UIWindow*)window;
 +(void)open:(NSDictionary*)param;
 @end
 
